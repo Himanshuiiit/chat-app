@@ -48,7 +48,7 @@ const accessChat = expressAsyncHandler(async (req, res) => {
   }
 });
 
-const fetchChatcs = expressAsyncHandler(async (req, res) => {
+const fetchChats = expressAsyncHandler(async (req, res) => {
   try {
     Chat.find({ users: { $elemMatch: { $eq: req.user._id } } })
       .populate("users", "-password")
@@ -173,7 +173,7 @@ const removeFromGroup = expressAsyncHandler(async(req,res)=>{
 
 module.exports = {
   accessChat,
-  fetchChatcs,
+  fetchChats,
   createGroupChat,
   renameGroup,
   addToGroup,
