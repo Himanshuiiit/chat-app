@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import {
   Box,
   Container,
@@ -9,19 +8,18 @@ import {
   Tabs,
   Text,
 } from "@chakra-ui/react";
+import { useEffect } from "react";
+import { useHistory } from "react-router";
 import Login from "../components/Authentication/Login";
 import Signup from "../components/Authentication/Signup";
-import { useNavigate } from "react-router-dom";
 
-const HomePage = () => {
-  const history = useNavigate();
+function Homepage() {
+  const history = useHistory();
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("userInfo"));
 
-    if (user) {
-      history("/chats");
-    }
+    if (user) history.push("/chats");
   }, [history]);
 
   return (
@@ -29,8 +27,8 @@ const HomePage = () => {
       <Box
         d="flex"
         justifyContent="center"
-        padding={3}
-        bg={"white"}
+        p={3}
+        bg="white"
         w="100%"
         m="40px 0 15px 0"
         borderRadius="lg"
@@ -41,10 +39,10 @@ const HomePage = () => {
         </Text>
       </Box>
       <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px">
-        <Tabs variant="soft-rounded">
+        <Tabs isFitted variant="soft-rounded">
           <TabList mb="1em">
-            <Tab w="50%">Login</Tab>
-            <Tab w="50%">Sign Up</Tab>
+            <Tab>Login</Tab>
+            <Tab>Sign Up</Tab>
           </TabList>
           <TabPanels>
             <TabPanel>
@@ -58,6 +56,6 @@ const HomePage = () => {
       </Box>
     </Container>
   );
-};
+}
 
-export default HomePage;
+export default Homepage;

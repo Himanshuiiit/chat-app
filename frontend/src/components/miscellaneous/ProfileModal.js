@@ -1,39 +1,32 @@
-/* eslint-disable */
+import { ViewIcon } from "@chakra-ui/icons";
 import {
-  Button,
-  IconButton,
-  Image,
   Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
   ModalBody,
   ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  Text,
+  Button,
   useDisclosure,
+  IconButton,
+  Text,
+  Image,
 } from "@chakra-ui/react";
-import React from "react";
 
 const ProfileModal = ({ user, children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <div>
+    <>
       {children ? (
         <span onClick={onOpen}>{children}</span>
       ) : (
-        <IconButton
-          d={{ base: "flex" }}
-          icon={<i className="fa-solid fa-eye"></i>}
-          onClick={onOpen}
-        />
+        <IconButton d={{ base: "flex" }} icon={<ViewIcon />} onClick={onOpen} />
       )}
-      <Modal isOpen={isOpen} onClose={onClose} size="lg" isCentered>
+      <Modal size="lg" onClose={onClose} isOpen={isOpen} isCentered>
         <ModalOverlay />
-        <ModalContent
-            h="410px"
-        >
+        <ModalContent h="410px">
           <ModalHeader
             fontSize="40px"
             fontFamily="Work sans"
@@ -43,34 +36,31 @@ const ProfileModal = ({ user, children }) => {
             {user.name}
           </ModalHeader>
           <ModalCloseButton />
-          <ModalBody 
+          <ModalBody
             d="flex"
             flexDir="column"
             alignItems="center"
             justifyContent="space-between"
           >
             <Image
-                borderRadius="full"
-                boxSize="150px"
-                src={user.pic}
-                alt={user.name}
+              borderRadius="full"
+              boxSize="150px"
+              src={user.pic}
+              alt={user.name}
             />
             <Text
-                fontSize={{base: "28px,", md:"30px"}}
-                fontFamily="Work sans"
+              fontSize={{ base: "28px", md: "30px" }}
+              fontFamily="Work sans"
             >
-                E-mail: {user.email}
+              Email: {user.email}
             </Text>
           </ModalBody>
-
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Close
-            </Button>
+            <Button onClick={onClose}>Close</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
-    </div>
+    </>
   );
 };
 
