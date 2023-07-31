@@ -15,7 +15,7 @@ import animationData from "../animations/typing.json";
 import io from "socket.io-client";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import { ChatState } from "../Context/ChatProvider";
-const ENDPOINT = "https://chit-chat-a5ky.onrender.com:5000"; // "https://Chit-Chat.herokuapp.com"; -> After deployment
+const ENDPOINT = "http://localhost:5000"; //"https://chit-chat-a5ky.onrender.com:5000";
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
