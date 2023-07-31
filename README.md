@@ -7,11 +7,18 @@ Chit-Chat is a Full Stack Chatting App.
 Install dependencies
 
 ```bash
-  cd frontend/
   npm install
 ```
 
+```bash
+  npm start
+```
 Start the Client
+
+```bash
+  cd frontend/
+  npm install
+```
 
 ```bash
   npm start
